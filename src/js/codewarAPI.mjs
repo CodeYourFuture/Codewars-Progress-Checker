@@ -49,7 +49,7 @@ export class AppData {
 
     } catch (err) {
       this.reset(); // Clear partial data on error
-      throw new Error(`Error: ${err.message}`);
+      throw new Error(`Error: (${username}) : ${err.message}`);
     }
   }
 

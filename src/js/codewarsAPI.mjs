@@ -82,7 +82,8 @@ export class AppData {
 export async function fetchUserKatas(username) {
   const katas = [];
 
-  username = encodeURIComponent(username.trim());
+  // Note: Don't trim because Codewars allows leading/trailing spaces in username.
+  username = encodeURIComponent(username);  
 
   // Note: Cannot find naming rules for usernames in the Codewars docs
   // The rules seems quite loose. For example, space (except trailing and leading space) is allowed.
@@ -116,7 +117,10 @@ export async function fetchUserKatas(username) {
 }
 
 export async function fetchUser(username) {
-  username = encodeURIComponent(username.trim());
+
+  // Note: Don't trim because Codewars allows leading/trailing spaces in username.
+  username = encodeURIComponent(username);
+
   // Ref: https://dev.codewars.com/#get-user
   const res = await fetch(`https://www.codewars.com/api/v1/users/${username}`);
 

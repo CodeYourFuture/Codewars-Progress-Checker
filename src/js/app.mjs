@@ -1,5 +1,5 @@
 import { kataCollections } from "./kataCollections.mjs";
-import { AppData } from "./codewarAPI.mjs";
+import { AppData } from "./codewarsAPI.mjs";
 
 const usernameInput = document.getElementById("username");
 const appData = new AppData(kataCollections);
@@ -13,11 +13,12 @@ window.addEventListener("load", async () => {
 
 function handleHashChanged() {
   const hash = window.location.hash.slice(1);
+  messageBox.hide();
+
   if (hash) {
     const username = decodeURIComponent(hash);
     loadAndRenderUserProgress(username);
   } else {
-    messageBox.hide();
     appData.reset();
     render(appData); 
   }
@@ -46,6 +47,7 @@ function handleUsernameInput(event) {
 }
 
 async function loadAndRenderUserProgress(username) {
+
   try {
     await appData.updateKataCompletionStatus(username);
 

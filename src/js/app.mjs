@@ -23,7 +23,9 @@ function handleHashChanged() {
   }
 }
 
-function handleUsernameInput() {
+function handleUsernameInput(event) {
+  event.preventDefault();
+
   const username = usernameInput.value.trim();
   if (!username) {
     messageBox.show("Please enter a username", "error");
